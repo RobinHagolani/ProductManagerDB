@@ -1,0 +1,21 @@
+<div th:fragment="navbar" id="navbar">
+    <nav class="navbar" role="navigation" aria-label="main navigation" style="background-color: #025159;">
+        <div class="navbar-brand">
+            <!-- Non-clickable "Product Management" logo -->
+            <span class="navbar-item" style="color: #C4EEF2; font-weight: bold; font-size: 1.5em;">
+                Product Management
+            </span>
+        </div>
+
+        <div class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" th:href="@{/product/new}" style="color: #C4EEF2;">
+                    Add Product
+                </a>
+                <a class="navbar-item" th:href="@{/product/list}" style="color: #C4EEF2;">
+                    Product List
+                </a>
+            </div>
+        </div>
+    </nav>
+</div>

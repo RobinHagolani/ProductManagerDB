@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Product List</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.9.3/css/bulma.min.css" />
+</head>
+<body>
+
+<div th:replace="~{/fragments/navbar :: navbar}"></div>
+
+<section class="section">
+    <div class="container">
+        <h1 class="title" style="color: #025159;">Product List</h1>
+
+        <table class="table is-fullwidth is-striped">
+            <thead style="background-color: #3E848C; color: #C4EEF2;">
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Stock</th>
+                <th>Price</th>
+                <th>Created At</th>
+                <th>Modified At</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <!-- Iterate over the list of products and display each one in a table row -->
+            <tr th:each="product : ${products}">
+                <td th:text="${product.id}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.description}"></td>
+                <td th:text="${product.stock}"></td>
+                <td th:text="${product.price}"></td>
+                <td th:text="${product.createdAt != null ? product.createdAt : 'N/A'}"></td>
+                <td th:text="${product.modifiedAt != null ? product.modifiedAt : 'N/A'}"></td>
+                <td>
+                    <a class="button is-small is-danger" th:href="@{/product/delete/{id}(id=${product.id})}">Delete</a>
+                </td>
+                <td>
+                    <a class="button is-small is-link" th:href="@{/product/edit/{id}(id=${product.id})}">Edit</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+
+</body>
+</html>
